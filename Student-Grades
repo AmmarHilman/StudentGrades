@@ -1,0 +1,111 @@
+import statistics as stat
+StudLib = {'Alex':[92,76,88],'Jeff':[78,88,93],'Sam':[89,92,93]}
+Username = 'Python33'
+Password = 'Python99'
+Login = ''
+LoginPass = ''
+LoginCount = 0
+LoginLimit = 3
+LoginDeny = False
+opt = ''
+Option = [1,2,3,4]
+
+print ('+====================================+')
+print ('You are entering Student Grade System')
+print ('+====================================+')
+
+while Login != Username and LoginPass != Password and not(LoginDeny):
+    if LoginCount < LoginLimit:
+        Login = input('Username :')
+        LoginPass = input('Password :')
+        LoginCount += 1
+    else :
+        LoginDeny = True
+if LoginDeny :
+    print('===================')
+    print('You shall not pass!')
+    print('===================')
+else:
+    print(' +++++++++++++++++++++++++++++++')
+    print(' Welcome to Student Grade System')
+    print(' +++++++++++++++++++++++++++++++')
+    while opt != Option:
+        print(' [1] - View Student')
+        print(' [2] - Enter Grade')
+        print(' [3] - Remove Student')
+        print(' [4] - Student Average Grades')
+        print(' [5] - Exit')
+        opt = input('   What would you like to do today? : ')
+
+        if opt == '1':
+            SIO = list(StudLib.items())
+            for b in SIO:
+                print(b)
+            proceed = input("Press any key to continue or 'x' to exit :")
+            if proceed == 'x':
+                print('---------------------------')
+                print('Thanks for using our system')
+                print('---------------------------')
+                exit()
+            else:
+                print()
+        elif opt == '2' :
+            print ('You are entering student grades')
+            name = input ('Student Name :')
+            grade = input ('Grade :')
+            print ('Adding grade to',name)
+            if name != StudLib:
+                StudLib [name] = [grade]
+            else:
+                StudLib [name] += [grade]
+            SI = list(StudLib.items())
+            for a in SI:
+                print (a)
+            proceed = input("Press any key to continue or 'x' to exit :")
+            if proceed == 'x':
+                print('---------------------------')
+                print('Thanks for using our system')
+                print('---------------------------')
+                exit()
+            else:
+                print()
+        elif opt == '3' :
+            print('Which student you want to remove?')
+            SL = list(StudLib.keys())
+            for i in SL:
+                print(i)
+            rem = input('Remove Student :')
+            del StudLib[rem]
+            print(StudLib)
+            proceed = input("Press any key to continue or 'x' to exit :")
+            if proceed == 'x':
+                print('---------------------------')
+                print('Thanks for using our system')
+                print('---------------------------')
+                exit()
+            else:
+                print()
+        elif opt == '4':
+            print('Which student you want calculate average score?')
+            SL = list(StudLib.keys())
+            for i in SL:
+                print(i)
+            Avg = input('Student name :')
+            value_list = StudLib[Avg]
+            Average = round(stat.mean(value_list),2)
+            print('Average score for', Avg, 'is', Average)
+            proceed = input("Press any key to continue or 'x' to exit :")
+            if proceed == 'x':
+                print('---------------------------')
+                print('Thanks for using our system')
+                print('---------------------------')
+                exit()
+            else:
+                print()
+        elif opt == '5':
+            print('---------------------------')
+            print('Thanks for using our system')
+            print('---------------------------')
+            exit()
+        else :
+            print()
